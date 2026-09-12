@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MERCATO Jardim — O primeiro supermercado pet friendly de São Paulo</title>
-  <meta name="description" content="Mercato Jardim: Hortifrúti selecionado, Açougue com cortes nobres, Padaria artesanal, Adega e Espaço Pet Friendly em Santo André - SP.">
+  <meta name="description" content="Mercato Jardim: Açougue com cortes nobres, Padaria artesanal, Mercado & Hortifrúti selecionado, Restaurante Bistrô e Espaço Pet Friendly em Santo André - SP.">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍋</text></svg>">
 </head>
@@ -23,7 +23,28 @@
 
       <nav class="nav-links">
         <a href="#inicio" class="nav-link active">Início</a>
-        <a href="#setores" class="nav-link">Setores</a>
+        
+        <!-- Menu Dropdown de Setores -->
+        <div class="nav-dropdown">
+          <a href="#setores" class="nav-link nav-dropdown-toggle">
+            Setores <span class="chevron">▼</span>
+          </a>
+          <div class="nav-dropdown-menu">
+            <a href="#setores" class="nav-dropdown-item" data-sector-target="acougue">
+              <span>🥩</span> Açougue Nobre
+            </a>
+            <a href="#setores" class="nav-dropdown-item" data-sector-target="padaria">
+              <span>🥖</span> Padaria Artesanal
+            </a>
+            <a href="#setores" class="nav-dropdown-item" data-sector-target="mercado">
+              <span>🥬</span> Mercado & Hortifrúti
+            </a>
+            <a href="#setores" class="nav-dropdown-item" data-sector-target="restaurante">
+              <span>🍝</span> Restaurante & Bistrô
+            </a>
+          </div>
+        </div>
+
         <a href="#promocoes" class="nav-link">Promoções</a>
         <a href="#sobre" class="nav-link">Sobre Nós</a>
         <a href="#unidades" class="nav-link">Unidades</a>
@@ -39,13 +60,20 @@
     </div>
   </header>
 
-  <!-- MOBILE MENU -->
+  <!-- MOBILE MENU (APENAS DISPOSITIVOS MÓVEIS) -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#inicio" class="nav-link">Início</a>
-    <a href="#setores" class="nav-link">Setores</a>
+    
+    <div class="mobile-menu-title">Nossos Setores</div>
+    <a href="#setores" class="nav-link" data-sector-target="acougue">🥩 Açougue Nobre</a>
+    <a href="#setores" class="nav-link" data-sector-target="padaria">🥖 Padaria Artesanal</a>
+    <a href="#setores" class="nav-link" data-sector-target="mercado">🥬 Mercado & Hortifrúti</a>
+    <a href="#setores" class="nav-link" data-sector-target="restaurante">🍝 Restaurante & Bistrô</a>
+    
+    <div class="mobile-menu-divider"></div>
     <a href="#promocoes" class="nav-link">Promoções</a>
     <a href="#sobre" class="nav-link">Sobre Nós</a>
-    <a href="#unidades" class="nav-link">Unidades</a>
+    <a href="#unidades" class="nav-link">Unidades & Contato</a>
     <a href="https://wa.me/5511983215016?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es!" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="margin-top: 10px;">
       WhatsApp (11) 98321-5016
     </a>
@@ -67,7 +95,7 @@
       </h1>
 
       <p class="hero-description">
-        Mais que fazer compras: um espaço completo com cortes nobres de açougue, padaria com pães artesanais quentinhos, hortifrúti fresco e o carinho que seu pet merece acompanhar.
+        Mais que fazer compras: uma experiência gastronômica completa com açougue especializado, padaria artesanal, mercado com hortifrúti fresco e restaurante bistrô exclusivo.
       </p>
 
       <div class="hero-buttons">
@@ -97,118 +125,218 @@
     </div>
   </section>
 
-  <!-- SETORES SECTION -->
-  <section class="section-sectors" id="setores">
+  <!-- SETORES INTERATIVOS (AÇOUGUE, PADARIA, MERCADO, RESTAURANTE) -->
+  <section class="section-sectors-interactive" id="setores">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Nossos Departamentos</span>
-        <h2 class="section-title">Conheça os <span class="gold-text">Setores do Mercato</span></h2>
+        <span class="section-tag">Departamentos Especializados</span>
+        <h2 class="section-title">Conheça cada <span class="gold-text">Setor do Mercato</span></h2>
         <p class="section-subtitle">
-          Tudo organizado e preparado para você encontrar máxima qualidade, procedência selecionada e conveniência para seu dia a dia.
+          Clique nas abas abaixo para navegar entre os setores e ver fotos exclusivas, diferenciais e especialidades de cada área.
         </p>
       </div>
 
-      <div class="sector-grid">
-        <!-- Padaria -->
-        <div class="sector-card">
-          <div class="sector-icon-wrapper">
-            <span>🥖</span>
+      <!-- Abas de Navegação dos Setores -->
+      <div class="sector-nav-tabs">
+        <button class="sector-tab-btn active" data-sector="acougue">
+          <span>🥩</span> Açougue Nobre
+        </button>
+        <button class="sector-tab-btn" data-sector="padaria">
+          <span>🥖</span> Padaria Artesanal
+        </button>
+        <button class="sector-tab-btn" data-sector="mercado">
+          <span>🥬</span> Mercado & Hortifrúti
+        </button>
+        <button class="sector-tab-btn" data-sector="restaurante">
+          <span>🍝</span> Restaurante & Bistrô
+        </button>
+      </div>
+
+      <!-- TAB 1: AÇOUGUE -->
+      <div class="sector-tab-panel active" id="panel-acougue">
+        <div class="sector-detail-layout">
+          <div class="sector-detail-text">
+            <span class="promo-badge">🥩 Carnes Selecionadas</span>
+            <h3>Açougue Nobre & Cortes Especiais</h3>
+            <p>
+              Nosso açougue conta com padrão de corte internacional e consultoria de especialistas. Oferecemos desde as opções perfeitas para o churrasco até cortes nobres porcionados com higiene impecável e procedência rigorosamente auditada.
+            </p>
+
+            <div class="sector-highlights-grid">
+              <div class="highlight-box">
+                <h5>🔥 Linha Churrasco Nobre</h5>
+                <p>Picanhas importadas, Tomahawk, Ribeye, Ancho e linguiças artesanais especiais.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🔪 Cortes Personalizados</h5>
+                <p>Nossos açougueiros preparam, limpam e fatiam exatamente no ponto desejado.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🛡️ Controle e Frescor</h5>
+                <p>Câmara fria de alta tecnologia e controle térmico ininterrupto.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>📦 Encomendas Especiais</h5>
+                <p>Peças inteiras temperadas ou prontas para assar para o seu evento.</p>
+              </div>
+            </div>
+
+            <a href="https://wa.me/5511983215016?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20cortes%20do%20a%C3%A7ougue." target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+              Consultar Cortes no WhatsApp
+            </a>
           </div>
-          <h3 class="sector-title">Padaria & Confeitaria</h3>
-          <p class="sector-description">
-            Fornadas quentinhas ao longo de todo o dia. Pães de fermentação natural, baguetes, bolos caseiros, doces finos e salgados preparados artesanalmente com ingredientes de alta qualidade.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Pães artesanais</span>
-            <span class="sector-tag">Fornadas quentes</span>
-            <span class="sector-tag">Confeitaria fina</span>
-            <span class="sector-tag">Cafeteria</span>
+
+          <div class="sector-detail-media">
+            <img src="assets/images/acougue.jpg" alt="Açougue e Cortes Nobres do Mercato">
+            <div class="sector-detail-badge">
+              <span>⭐</span> Cortes de Alta Gastronomia
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Açougue -->
-        <div class="sector-card">
-          <div class="sector-icon-wrapper">
-            <span>🥩</span>
+      <!-- TAB 2: PADARIA -->
+      <div class="sector-tab-panel" id="panel-padaria">
+        <div class="sector-detail-layout">
+          <div class="sector-detail-text">
+            <span class="promo-badge">🥖 Fermentação Natural</span>
+            <h3>Padaria Artesanal & Confeitaria Fina</h3>
+            <p>
+              O aroma inconfundível do pão recém-saído do forno acompanha você o dia todo. Produzimos pães de fermentação lenta com farinhas especiais, confeitaria tradicional e refinada, além de clássicos matinais preparados na chapa.
+            </p>
+
+            <div class="sector-highlights-grid">
+              <div class="highlight-box">
+                <h5>🥖 Pães Artesanais</h5>
+                <p>Sourdough rústico, ciabattas italianas, baguetes crocantes e croissants amanteigados.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🎂 Confeitaria de Alto Padrão</h5>
+                <p>Bolos caseiros, tortas doces, carolinas, torteletas de frutas e doces finos.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>☕ Cafeteria Completa</h5>
+                <p>Grãos de café selecionados, cappuccino cremoso e pão na chapa com queijo da canastra.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>⏰ Fornadas a Cada Hora</h5>
+                <p>Pãozinho francês sempre crocante e quente em qualquer horário que você visitar.</p>
+              </div>
+            </div>
+
+            <a href="https://wa.me/5511983215016?text=Ol%C3%A1!%20Gostaria%20de%20encomendar%20produtos%20da%20padaria." target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+              Fazer Encomenda na Padaria
+            </a>
           </div>
-          <h3 class="sector-title">Açougue & Cortes Nobres</h3>
-          <p class="sector-description">
-            Cortes selecionados, carnes nobres para seu churrasco e opções práticas para o dia a dia. Rigoroso controle de procedência, higiene e atendimento personalizado dos nossos especialistas.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Cortes especiais</span>
-            <span class="sector-tag">Linha churrasco</span>
-            <span class="sector-tag">Atendimento consultivo</span>
-            <span class="sector-tag">Carnes frescas</span>
+
+          <div class="sector-detail-media">
+            <img src="assets/images/padaria.jpg" alt="Padaria Artesanal Mercato">
+            <div class="sector-detail-badge">
+              <span>🌾</span> Pães Frescos & Artesanais
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Hortifrúti -->
-        <div class="sector-card">
-          <div class="sector-icon-wrapper">
-            <span>🥬</span>
+      <!-- TAB 3: MERCADO & HORTIFRÚTI -->
+      <div class="sector-tab-panel" id="panel-mercado">
+        <div class="sector-detail-layout">
+          <div class="sector-detail-text">
+            <span class="promo-badge">🥬 Frescor Diário</span>
+            <h3>Mercado Completo & Hortifrúti Selecionado</h3>
+            <p>
+              Uma curadoria de produtos nacionais e importados de mercearia, combinada ao nosso famoso hortifrúti com abastecimento diário. Frutas colhidas no ápice do sabor, verduras selecionadas, linha orgânica e itens essenciais para sua casa.
+            </p>
+
+            <div class="sector-highlights-grid">
+              <div class="highlight-box">
+                <h5>🍎 Hortifrúti Fresco Diário</h5>
+                <p>Chegada de produtores parceiros toda madrugada para garantir máximo sabor e durabilidade.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🥗 Linha Saudável & Fit</h5>
+                <p>Produtos sem glúten, sem lactose, opções veganas, castanhas e grãos a granel.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🧀 Queijos & Frios Nobres</h5>
+                <p>Tábua de frios personalizada, queijos artesanais da Serra da Canastra e importados.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🛒 Mercearia Premium</h5>
+                <p>Massas italianas, azeites extravirgens premiados, temperos e produtos do dia a dia.</p>
+              </div>
+            </div>
+
+            <a href="https://wa.me/5511983215016?text=Ol%C3%A1!%20Quais%20s%C3%A3o%20os%20produtos%20frescos%20do%20hortifruti%20hoje?" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+              Consultar Hortifrúti no WhatsApp
+            </a>
           </div>
-          <h3 class="sector-title">Hortifrúti Selecionado</h3>
-          <p class="sector-description">
-            Frutas doces, legumes e verduras colhidos e repostos diariamente. Variedades selecionadas a dedo para garantir frescor, cores vibrantes e nutrição real na sua mesa.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Chegada diária</span>
-            <span class="sector-tag">Frutas da estação</span>
-            <span class="sector-tag">Orgânicos</span>
-            <span class="sector-tag">Higienizados</span>
+
+          <div class="sector-detail-media">
+            <img src="assets/images/hortifruti.jpg" alt="Hortifrúti e Mercado Mercato">
+            <div class="sector-detail-badge">
+              <span>🌱</span> Orgânicos e Frutas Selecionadas
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Cantinho Saudável -->
-        <div class="sector-card">
-          <div class="sector-icon-wrapper">
-            <span>🥗</span>
+      <!-- TAB 4: RESTAURANTE & BISTRÔ -->
+      <div class="sector-tab-panel" id="panel-restaurante">
+        <div class="sector-detail-layout">
+          <div class="sector-detail-text">
+            <span class="promo-badge">🍝 Gastronomia no Local</span>
+            <h3>Restaurante, Bistrô & Wine Bar</h3>
+            <p>
+              Viva uma pausa prazerosa durante seu dia. Nosso restaurante e bistrô traz pratos artesanais com massas frescas, carnes preparadas na brasa, tábuas de antepastos e uma carta de vinhos selecionada para harmonizar cada momento.
+            </p>
+
+            <div class="sector-highlights-grid">
+              <div class="highlight-box">
+                <h5>🍝 Massas & Pratos do Dia</h5>
+                <p>Receitas inspiradas na cozinha italiana com ingredientes frescos direto do mercado.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🍷 Harmonização com Adega</h5>
+                <p>Deguste rótulos renomados harmonizados com nossas porções e tábuas especiais.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>✨ Eventos Gastronômicos</h5>
+                <p>Wine Connection, noites de degustação de queijos e jantares temáticos.</p>
+              </div>
+              <div class="highlight-box">
+                <h5>🍽️ Conforto & Acolhimento</h5>
+                <p>Ambiente moderno e agradável, perfeito para almoços rápidos ou encontros com amigos.</p>
+              </div>
+            </div>
+
+            <a href="https://wa.me/5511983215016?text=Ol%C3%A1!%20Gostaria%20de%20saber%20sobre%20o%20card%C3%A1pio%20do%20Restaurante." target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+              Consultar Cardápio no WhatsApp
+            </a>
           </div>
-          <h3 class="sector-title">Cantinho Saudável & Fit</h3>
-          <p class="sector-description">
-            Uma seleção pensada no seu bem-estar: produtos sem glúten, sem lactose, opções veganas, suplementos, grãos a granel, castanhas e lanches equilibrados para o seu estilo de vida.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Sem glúten / lactose</span>
-            <span class="sector-tag">Grãos e castanhas</span>
-            <span class="sector-tag">Vegano</span>
-            <span class="sector-tag">Suplementos</span>
+
+          <div class="sector-detail-media">
+            <img src="assets/images/restaurante.jpg" alt="Restaurante e Bistrô Mercato">
+            <div class="sector-detail-badge">
+              <span>🍷</span> Almoço, Antepastos & Vinhos
+            </div>
           </div>
         </div>
+      </div>
 
-        <!-- Adega & Bebidas -->
-        <div class="sector-card">
-          <div class="sector-icon-wrapper">
-            <span>🍷</span>
-          </div>
-          <h3 class="sector-title">Adega & Bebidas Especiais</h3>
-          <p class="sector-description">
-            Rótulos de vinhos nacionais e importados, espumantes, cervejas artesanais e destilados selecionados para momentos comemorativos e confraternizações em família e amigos.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Vinhos importados</span>
-            <span class="sector-tag">Cervejas artesanais</span>
-            <span class="sector-tag">Espumantes</span>
-            <span class="sector-tag">Destilados</span>
-          </div>
+      <!-- OUTROS DESTAQUES COMPLEMENTARES -->
+      <div class="all-sectors-cards">
+        <div class="mini-sector-card">
+          <h4><span>🐾</span> Pet Friendly</h4>
+          <p>Carrinhos adaptados para pets e ambiente preparado para o seu bichinho acompanhar você.</p>
         </div>
-
-        <!-- Pet Friendly -->
-        <div class="sector-card highlight">
-          <div class="sector-icon-wrapper">
-            <span>🐾</span>
-          </div>
-          <h3 class="sector-title">Espaço Pet Friendly</h3>
-          <p class="sector-description">
-            Seu melhor amigo é bem-vindo! Carrinhos adaptados para pets, hidratação disponível e uma experiência confortável e segura para você fazer compras acompanhado do seu bichinho.
-          </p>
-          <div class="sector-features">
-            <span class="sector-tag">Carrinhos exclusivos</span>
-            <span class="sector-tag">Água fresca</span>
-            <span class="sector-tag">Ambiente acolhedor</span>
-            <span class="sector-tag">Pioneiro em SP</span>
-          </div>
+        <div class="mini-sector-card">
+          <h4><span>🍷</span> Adega Exclusiva</h4>
+          <p>Mais de 300 rótulos selecionados entre vinhos nacionais, importados e espumantes.</p>
+        </div>
+        <div class="mini-sector-card">
+          <h4><span>🧀</span> Rotisseria & Frios</h4>
+          <p>Antepastos frescos, queijos fatiados na hora e pratos prontos para viagem.</p>
         </div>
       </div>
     </div>
@@ -270,8 +398,8 @@
 
         <!-- Promo 4 -->
         <div class="promo-card">
-          <span class="promo-badge">🍷 Seleção do Sommelier</span>
-          <h4 class="promo-title">Quinzena de Vinhos & Espumantes</h4>
+          <span class="promo-badge">🍷 Seleção Especial</span>
+          <h4 class="promo-title">Quinzena de Vinhos & Bistrô</h4>
           <p class="promo-desc">Seleção exclusiva de rótulos chilenos, argentinos e portugueses com condições especiais para abastecer sua adega.</p>
           <div class="promo-footer">
             <div class="promo-price">
@@ -293,10 +421,10 @@
           <span class="section-tag">Nossa Essência</span>
           <h2>Um supermercado criado para quem valoriza <span class="gold-text">tempo e qualidade</span></h2>
           <p>
-            O <strong>MERCATO Jardim</strong> nasceu com a missão de transformar a rotina de compras em um momento prazeroso, confortável e completo. Combinamos o calor de um empório de bairro com a variedade de um supermercado moderno.
+            O <strong>MERCATO Jardim</strong> nasceu com a missão de transformar a rotina de compras em um momento prazeroso, confortável e completo. Combinamos o calor de um empório de bairro com a sofisticação e variedade de um supermercado moderno.
           </p>
           <p>
-            Fomos os pioneiros no Estado de São Paulo ao implantar uma verdadeira experiência <strong>Pet Friendly</strong>, permitindo que você compartilhe os momentos com seu amigo de quatro patas em um ambiente devidamente preparado e higiênico.
+            Fomos pioneiros em São Paulo ao implantar uma verdadeira experiência <strong>Pet Friendly</strong>, permitindo que você compartilhe os momentos com seu amigo de quatro patas em um ambiente devidamente preparado e higiênico.
           </p>
 
           <div class="about-pillars">
@@ -332,12 +460,12 @@
         </div>
 
         <div class="about-image-card">
-          <img src="assets/images/hero-bg.jpg" alt="Interior do Mercado">
+          <img src="assets/images/restaurante.jpg" alt="Ambiente Mercato Jardim">
           <div class="about-floating-badge">
             <span class="badge-icon">🏆</span>
             <div>
               <h4>Supermercado Destaque no ABC Paulista</h4>
-              <p>Reconhecido pelo atendimento, frescor e pioneirismo pet friendly.</p>
+              <p>Reconhecido pelo atendimento, gastronomia e pioneirismo pet friendly.</p>
             </div>
           </div>
         </div>
@@ -472,13 +600,12 @@
 
         <!-- Col 2 -->
         <div class="footer-col">
-          <h4>Setores</h4>
+          <h4>Setores Especializados</h4>
           <div class="footer-links">
-            <a href="#setores">Padaria & Confeitaria</a>
-            <a href="#setores">Açougue & Cortes Nobres</a>
-            <a href="#setores">Hortifrúti Selecionado</a>
-            <a href="#setores">Cantinho Saudável</a>
-            <a href="#setores">Adega & Bebidas</a>
+            <a href="#setores" data-sector-target="acougue">Açougue Nobre</a>
+            <a href="#setores" data-sector-target="padaria">Padaria Artesanal</a>
+            <a href="#setores" data-sector-target="mercado">Mercado & Hortifrúti</a>
+            <a href="#setores" data-sector-target="restaurante">Restaurante & Bistrô</a>
             <a href="#setores">Espaço Pet Friendly</a>
           </div>
         </div>

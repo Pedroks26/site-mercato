@@ -53,6 +53,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Tab switching logic for Sectors (Açougue, Padaria, Mercado, Restaurante)
+  const sectorTabBtns = document.querySelectorAll('.sector-tab-btn');
+  const sectorTabPanels = document.querySelectorAll('.sector-tab-panel');
+
+  function switchSectorTab(sectorKey) {
+    sectorTabBtns.forEach(btn => {
+      if (btn.getAttribute('data-sector') === sectorKey) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    sectorTabPanels.forEach(panel => {
+      if (panel.id === `panel-${sectorKey}`) {
+        panel.classList.add('active');
+      } else {
+        panel.classList.remove('active');
+      }
+    });
+  }
+
+  sectorTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sectorKey = btn.getAttribute('data-sector');
+      if (sectorKey) {
+        switchSectorTab(sectorKey);
+      }
+    });
+  });
+
+  // Sector links from navbar dropdown or footer
+  document.querySelectorAll('[data-sector-target]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const sectorKey = link.getAttribute('data-sector-target');
+      if (sectorKey) {
+        switchSectorTab(sectorKey);
+        const setoresSection = document.getElementById('setores');
+        if (setoresSection) {
+          const headerOffset = 80;
+          const elementPosition = setoresSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+
   // Intersection Observer for scroll animations
   const observerOptions = {
     threshold: 0.1,
@@ -69,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, observerOptions);
 
-  const animatedCards = document.querySelectorAll('.sector-card, .promo-card, .unit-card, .about-pillars .pillar-item');
+  const animatedCards = document.querySelectorAll('.promo-card, .unit-card, .about-pillars .pillar-item, .mini-sector-card');
   animatedCards.forEach(card => {
     card.style.opacity = '0';
     card.style.transform = 'translateY(24px)';
