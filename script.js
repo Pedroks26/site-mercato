@@ -127,6 +127,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Hover interativo nos quadros dos setores (troca de imagem e badge em tempo real)
+  const interactiveBoxes = document.querySelectorAll('.interactive-box');
+  interactiveBoxes.forEach(box => {
+    box.addEventListener('mouseenter', () => {
+      const parentPanel = box.closest('.sector-tab-panel');
+      if (!parentPanel) return;
+
+      // Remove classe active dos irmãos
+      parentPanel.querySelectorAll('.interactive-box').forEach(b => b.classList.remove('active'));
+      box.classList.add('active');
+
+      const newImgSrc = box.getAttribute('data-img-src');
+      const newBadgeText = box.getAttribute('data-badge');
+      const mainImg = parentPanel.querySelector('.sector-detail-media img');
+      const mainBadge = parentPanel.querySelector('.sector-detail-badge');
+
+      if (mainImg && newImgSrc && mainImg.getAttribute('src') !== newImgSrc) {
+        mainImg.style.opacity = '0.3';
+        mainImg.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+          mainImg.src = newImgSrc;
+          mainImg.style.opacity = '1';
+          mainImg.style.transform = 'scale(1)';
+        }, 150);
+      }
+
+      if (mainBadge && newBadgeText) {
+        mainBadge.innerHTML = newBadgeText;
+      }
+    });
+  });
+
   // Sector links from navbar dropdown or footer
   document.querySelectorAll('[data-sector-target]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -141,6 +173,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ScrollSpy: marca apenas o link ativo correspondente na navbar conforme a página é rolada
+  const sections = document.querySelectorAll('section[id]');
+  const desktopNavLinks = document.querySelectorAll('.nav-links .nav-link');
+  const mobileNavLinks = document.querySelectorAll('.mobile-menu .nav-link');
+
+  const updateActiveNavLink = () => {
+    // Usamos um ponto de referência próximo do topo da viewport (offset de ~120px para compensar a navbar)
+    const scrollPos = window.scrollY + 120;
+    let currentSectionId = '';
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentSectionId = section.getAttribute('id');
+      }
+    });
+
+    if (currentSectionId) {
+      // Atualiza nav desktop
+      desktopNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        // Se for o botão dropdown de setores
+        if (link.classList.contains('nav-dropdown-toggle')) {
+          if (currentSectionId === 'setores') {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        } else {
+          if (href === `#${currentSectionId}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        }
+      });
+
+      // Atualiza nav mobile
+      mobileNavLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentSectionId}`) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+  };
+
+  window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+  updateActiveNavLink();
 
   // Intersection Observer for scroll animations
   const observerOptions = {
