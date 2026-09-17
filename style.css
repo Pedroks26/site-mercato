@@ -165,6 +165,32 @@ ul {
   text-decoration: none;
 }
 
+/* Logo como imagem SVG */
+.brand-logo-img {
+  gap: 0;
+}
+
+.navbar-logo-img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(232, 168, 56, 0.3));
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.brand-logo-img:hover .navbar-logo-img {
+  filter: drop-shadow(0 0 14px rgba(232, 168, 56, 0.55));
+  transform: scale(1.02);
+}
+
+.footer-logo-img {
+  height: 52px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 6px rgba(232, 168, 56, 0.2));
+}
+
 .brand-logo-icon {
   width: 42px;
   height: 42px;
@@ -1195,9 +1221,37 @@ ul {
 }
 
 .social-btn:hover {
-  background: var(--gold-primary);
-  color: #0c0d0e;
   transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* Instagram: gradient rosa/roxo */
+.social-btn-instagram {
+  color: #fff;
+  background: var(--bg-surface);
+  border-color: rgba(225, 48, 108, 0.3);
+}
+
+.social-btn-instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(220, 39, 67, 0.45);
+  transform: translateY(-3px);
+}
+
+/* WhatsApp: verde */
+.social-btn-whatsapp {
+  color: #fff;
+  background: var(--bg-surface);
+  border-color: rgba(37, 211, 102, 0.3);
+}
+
+.social-btn-whatsapp:hover {
+  background: #25d366;
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
 }
 
 .footer-bottom {
